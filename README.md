@@ -1,6 +1,6 @@
 <div align="center">
 
-# GTLM — Gabriel's Transformer Language Model
+# GTLM — Generative Transformer Language Model
 
 **A Sparse Mixture-of-Experts language model trained from scratch on a single GPU.**
 
