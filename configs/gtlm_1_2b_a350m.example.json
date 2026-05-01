@@ -1,0 +1,68 @@
+{
+  "model": {
+    "vocab_size": 32002,
+    "max_seq_length": 2048,
+    "hidden_dim": 1024,
+    "num_heads": 16,
+    "num_experts": 16,
+    "top_k": 2,
+    "num_layers": 22,
+    "dropout_rate": 0.05,
+    "expert_hidden_multiplier": 1.6666666667,
+    "expert_hidden_multiple": 256,
+    "init_std": 0.02,
+    "prefer_liger_rmsnorm": true,
+    "prefer_flash_attention": true
+  },
+  "data": {
+    "tokenizer_name": "mistralai/Mistral-7B-v0.1",
+    "dataset_path": "/content/dataset/train",
+    "input_column": "input_ids",
+    "num_workers": 8,
+    "pin_memory": true,
+    "drop_last": true,
+    "prefetch_factor": 4,
+    "persistent_workers": true,
+    "shuffle": true,
+    "use_distributed_sampler": true
+  },
+  "optimizer": {
+    "learning_rate": 0.001,
+    "beta1": 0.9,
+    "beta2": 0.95,
+    "eps": 1e-8,
+    "weight_decay": 0.01
+  },
+  "schedule": {
+    "num_epochs": 2,
+    "warmup_ratio": 0.03,
+    "min_lr_ratio": 0.1
+  },
+  "runtime": {
+    "output_dir": "/content/drive/MyDrive/moe_checkpoints_liger_rmsnorm",
+    "checkpoint_every_steps": 500,
+    "log_every_steps": 25,
+    "load_balancing_alpha": 0.01,
+    "compile_model": false,
+    "resume_checkpoint": null,
+    "seed": 1337,
+    "allow_tf32": true,
+    "empty_cache_before_train": true
+  },
+  "deepspeed": {
+    "train_micro_batch_size_per_gpu": 32,
+    "gradient_accumulation_steps": 32,
+    "steps_per_print": 25,
+    "bf16_enabled": true,
+    "zero_stage": 1,
+    "offload_optimizer_device": "cpu",
+    "offload_pin_memory": true,
+    "overlap_comm": true,
+    "contiguous_gradients": true,
+    "reduce_scatter": true,
+    "round_robin_gradients": true,
+    "gradient_clipping": 1.0,
+    "activation_checkpointing": true,
+    "cpu_checkpointing": true
+  }
+}

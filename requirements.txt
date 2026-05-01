@@ -1,0 +1,10 @@
+torch>=2.1
+transformers>=4.40
+datasets>=2.18
+deepspeed>=0.14
+tqdm>=4.66
+safetensors>=0.4
+
+# Optional CUDA acceleration packages:
+# flash-attn
+# liger-kernel
